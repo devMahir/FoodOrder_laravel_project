@@ -7,6 +7,7 @@
         <!-- <link rel="shortcut icon" href="images/star.png" type="favicon/ico" /> -->
 
         <title>Mamma's Kitchen</title>
+        
 
         <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}" >
         <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}" >
@@ -28,30 +29,7 @@
                 });
             });
         </script>
-
-        <script src="https://maps.googleapis.com/maps/api/js"></script>
-        <script>
-            function initialize() {
-                var mapCanvas = document.getElementById('map-canvas');
-                var mapOptions = {
-                    center: new google.maps.LatLng(24.909439, 91.833800),
-                    zoom: 16,
-                    scrollwheel: false,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-                var map = new google.maps.Map(mapCanvas, mapOptions)
-
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(24.909439, 91.833800),
-                    title:"Mamma's Kitchen Restaurant"
-                });
-
-                // To add the marker to the map, call setMap();
-                marker.setMap(map);
-            }
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
-
+        @stack('homecss')
 
     </head>
     <body data-spy="scroll" data-target="#template-navbar">
@@ -86,37 +64,10 @@
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.row -->
         </nav>
-
-
+        
+        
         <!--== 5. Header ==-->
-        <section id="header-slider" class="owl-carousel">
-            <div class="item">
-                <div class="container">
-                    <div class="header-content">
-                        <h1 class="header-title">BEST FOOD</h1>
-                        <p class="header-sub-title">create your own slogan</p>
-                    </div> <!-- /.header-content -->
-                </div>
-            </div>
-            <div class="item">
-                <div class="container">
-                    <div class="header-content">
-                        <h1 class="header-title">BEST SNACKS</h1>
-                        <p class="header-sub-title">create your own slogan</p>
-                    </div> <!-- /.header-content -->
-                </div>
-            </div>
-            <div class="item">
-                <div class="container">
-                    <div class="header-content text-right pull-right">
-                        <h1 class="header-title">BEST DRINKS</h1>
-                        <p class="header-sub-title">create your own slogan</p>
-                    </div> <!-- /.header-content -->
-                </div>
-            </div>
-        </section>
-
-
+        @yield('home_slider')
 
         <!--== 6. About us ==-->
         <section id="about" class="about">
