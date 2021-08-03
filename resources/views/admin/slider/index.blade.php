@@ -23,28 +23,28 @@
                         <div class="table-responsive">
                             <table id="table" class="table" style="width:100%">
                                 <thead class="text-primary">
-                                    <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Sub Title</th>
-                                    <th>Image</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Title</th>
+                                    <th class="text-center">Sub Title</th>
+                                    <th class="text-center">Image</th>
+                                    <th class="text-center">Created At</th>
+                                    <th class="text-center">Updated At</th>
+                                    <th class="text-center">Edit</th>
+                                    <th class="text-center">Delete</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($sliders as $key=>$slider)
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $slider->title }}</td>
-                                            <td>{{ $slider->sub_title }}</td>
-                                            <td>{{ $slider->image }}</td>
-                                            <td>{{ $slider->created_at }}</td>
-                                            <td>{{ $slider->updated_at }}</td>
-                                            <td>
+                                            <td class="text-center">{{ $key + 1 }}</td>
+                                            <td class="text-center">{{ $slider->title }}</td>
+                                            <td class="text-center">{{ $slider->sub_title }}</td>
+                                            <td class="text-center"><img class="image-responsive img-thumbnail" src="{{ asset('uploads/slider/'.$slider->image) }}" style="height: 100px; width: 150px" alt="{{ $slider->image }}"></td>
+                                            <td class="text-center">{{ $slider->created_at }}</td>
+                                            <td class="text-center">{{ $slider->updated_at }}</td>
+                                            <td class="text-center">
                                                <a class="btn btn-info btn-sm" href="{{ route('slider.edit', $slider->id) }}"><i class="material-icons">mode_edit</i></a>
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                                 <form id="delete-form-{{ $slider->id }}" action="{{ route('slider.destroy',  $slider->id ) }}" method="POST">
                                                     {{ csrf_field() }}
                                                     @method('DELETE')

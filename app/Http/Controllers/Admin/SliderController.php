@@ -63,7 +63,7 @@ class SliderController extends Controller
         $slider -> sub_title = $request -> sub_title;
         $slider -> image = $imagename;
         $slider -> save();
-        return redirect()->route('slider.index')->with('successMsg','Slider Successfully Save');
+        return redirect()->route('slider.index')->with('successMsg','Slider Successfully Saved');
     }
 
     /**
@@ -113,6 +113,7 @@ class SliderController extends Controller
             if (!file_exists('uploads/slider')) {
                 mkdir('uploads/slider',0777,true);
             }
+            unlink('uploads/slider/'.$slider->image);
             $image->move('uploads/slider',$imagename);
         }else {
             $imagename = $slider->image;

@@ -23,26 +23,26 @@
                         <div class="table-responsive">
                             <table id="table" class="table" style="width:100%">
                                 <thead class="text-primary">
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Slug</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Slug</th>
+                                    <th class="text-center">Created At</th>
+                                    <th class="text-center">Updated At</th>
+                                    <th class="text-center">Edit</th>
+                                    <th class="text-center">Delete</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($categories as $key=>$category)
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $category ->name }}</td>
-                                            <td>{{ $category ->slug }}</td>
-                                            <td>{{ $category ->created_at }}</td>
-                                            <td>{{ $category ->updated_at }}</td>
-                                            <td>
+                                            <td class="text-center">{{ $key + 1 }}</td>
+                                            <td class="text-center">{{ $category ->name }}</td>
+                                            <td class="text-center">{{ $category ->slug }}</td>
+                                            <td class="text-center">{{ $category ->created_at }}</td>
+                                            <td class="text-center">{{ $category ->updated_at }}</td>
+                                            <td class="text-center">
                                                <a class="btn btn-info btn-sm" href="{{ route('category.edit', $category->id) }}"><i class="material-icons">mode_edit</i></a>
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                                 <form id="delete-form-{{ $category->id }}" action="{{ route('category.destroy',  $category->id ) }}" method="POST">
                                                     {{ csrf_field() }}
                                                     @method('DELETE')

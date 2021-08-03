@@ -106,11 +106,11 @@
                                     <div class="section-header">
                                         <h2 class="pricing-title">Affordable Pricing</h2>
                                         <ul id="filter-list" class="clearfix">
-                                            <li class="filter" data-filter="all">All</li>
-                                            <li class="filter" data-filter=".breakfast">Breakfast</li>
-                                            <li class="filter" data-filter=".special">Special</li>
-                                            <li class="filter" data-filter=".desert">Desert</li>
-                                            <li class="filter" data-filter=".dinner">Dinner</li>
+                                            <li class="filter" data-filter="all">All <span class="badge">{{ $items->count() }}</span> </li>
+
+                                            @foreach ($categories as $category)
+                                                <li class="filter" data-filter="#{{ $category->slug }}">{{ $category->name }} <span class="badge">{{ $category->items->count() }}</span> </li>
+                                            @endforeach
                                         </ul><!-- @end #filter-list -->
                                     </div>
                                 </div>
@@ -123,22 +123,23 @@
                     <div class="row">  
                         <div class="col-md-10 col-md-offset-1">
                             <ul id="menu-pricing" class="menu-price">
-                                <li class="item dinner">
+                                @foreach ($items as $item)
+                                <li class="item" id="{{ $item->category->slug }}">
 
                                     <a href="#">
-                                        <img src="{{ asset('frontend/images/food1.jpg') }}" class="img-responsive" alt="Food" >
+                                        <img src="{{ asset('uploads/item/'.$item->image) }}" class="img-responsive" alt="Food" style="height: 250px; width:450px;">
                                         <div class="menu-desc text-center">
                                             <span>
-                                                <h3>Tomato Curry</h3>
-                                                Natalie &amp; Justin Cleaning by Justin Younger
+                                                <h3>{{ $item->name }}</h3>
+                                                {{ $item->description }}
                                             </span>
                                         </div>
                                     </a>
                                         
-                                    <h2 class="white">$20</h2>
+                                    <h2 class="white">$ {{ $item->price }}</h2>
                                 </li>
-
-                                <li class="item breakfast">
+                                @endforeach
+                                {{-- <li class="item breakfast">
 
                                     <a href="#">
                                         <img src="{{ asset('frontend/images/food2.jpg') }}" class="img-responsive" alt="Food" >
@@ -249,7 +250,7 @@
                                     </a>
                                     
                                     <h2 class="white">$38</h2>
-                                </li>  
+                                </li>   --}}
                             </ul>
 
                             <!-- <div class="text-center">
