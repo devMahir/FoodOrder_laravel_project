@@ -49,7 +49,7 @@
                                                <a class="btn btn-info btn-sm" href="{{ route('item.edit', $item->id) }}"><i class="material-icons">mode_edit</i></a>
                                             </td>
                                             <td class="text-center">
-                                                <form id="delete-form-{{ $item->id }}" action="{{ route('item.destroy',  $item->id ) }}" method="POST">
+                                                <form action="{{ route('item.destroy', $item->id ) }}" method="POST">
                                                     {{ csrf_field() }}
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></button>
